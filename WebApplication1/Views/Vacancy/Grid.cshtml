@@ -1,0 +1,54 @@
+﻿@using RecrutmentAgency.Data
+@using RecrutmentAgency.Extensions
+@model IEnumerable<RecrutmentAgency.Data.Vacancy>
+
+@{
+    var vacancy = ViewData["Vacancy"] as Vacancy;
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.SortLink("Название", "Name", "Index", "Vacancy", null)           
+        </th>
+        <th>
+            @Html.SortLink("Описание", "Description", "Index", "Vacancy", null)
+        </th>
+        <th>
+            @Html.SortLink("Дата начала", "DateBegin", "Index", "Vacancy", null)
+        </th>
+        <th>
+            @Html.SortLink("Дата окончания", "DateEnd", "Index", "Vacancy", null)
+        </th>
+        <th>
+            @Html.SortLink("Требования", "Demand", "Index", "Vacancy", null)
+        </th>
+        <th>
+            @Html.SortLink("Зарплата", "Salary", "Index", "Vacancy", null)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateBegin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Demand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+        </tr>
+    }
+
+</table>

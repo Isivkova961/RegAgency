@@ -1,0 +1,4 @@
+﻿@model RecrutmentAgency.Files.PhotoFileWrapper
+
+@Html.Partial("DisplayTemplates/PhotoFileWrapper", Model)
+<input type="file" name="@ViewData.TemplateInfo.GetFullHtmlFieldName("PostedFile")" />

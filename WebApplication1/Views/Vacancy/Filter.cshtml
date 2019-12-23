@@ -1,0 +1,37 @@
+﻿@model RecrutmentAgency.Data.Filters.VacancyFilter
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name)
+            @Html.EditorFor(model => model.Name)
+            @Html.LabelFor(model => model.Description)
+            @Html.EditorFor(model => model.Description)
+            @Html.LabelFor(model => model.Company)
+            @Html.EditorFor(model => model.Company)
+        </div>
+        <div class="form-group">
+            @Html.Label("Дата открытия с")
+            @Html.EditorFor(model => model.DateBegin.From)
+            @Html.Label("Дата открытия по")
+            @Html.EditorFor(model => model.DateBegin.To)
+        </div>
+        <div class="form-group">
+            @Html.Label("Дата закрытия с")
+            @Html.EditorFor(model => model.DateEnd.From)
+            @Html.Label("Дата закрытия по")
+            @Html.EditorFor(model => model.DateEnd.To)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Demand)
+            @Html.EditorFor(model => model.Demand)
+            @Html.Label("Зарплата от")
+            @Html.EditorFor(model => model.Salary.From)
+            @Html.Label("Зарплата до")
+            @Html.EditorFor(model => model.Salary.To)
+            <input type="submit" value="Поиск" />
+        </div>
+
+    </div>
+}

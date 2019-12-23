@@ -1,0 +1,11 @@
+﻿@using RecrutmentAgency.Data.Filters
+@model RecrutmentAgency.Models.CandidateListModel
+
+<h2>Список кандидатов</h2>
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+@Html.Partial("Filter", new CandidateFilter())
+<div style="height:20px;"></div>
+@Html.Partial("Grid", Model.Items)

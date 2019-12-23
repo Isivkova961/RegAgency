@@ -1,0 +1,18 @@
+﻿@model RecrutmentAgency.Files.PhotoFileWrapper
+
+@if (Model != null && Model.PhotoFile != null)
+{
+    var fileName = !string.IsNullOrEmpty(Model.PhotoFile.FileName) ? @Model.PhotoFile.FileName : "Без названия";
+    <div>
+        @if (Model.PhotoFile.Id > 0)
+        {
+        <a href="@Url.Action("Download", "PhotoFile", new { id = Model.PhotoFile.Id })">
+            @fileName
+        </a>
+        }
+        else
+        {
+        @fileName
+        }
+    </div>
+}

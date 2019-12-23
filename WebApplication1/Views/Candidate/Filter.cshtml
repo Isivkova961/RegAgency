@@ -1,0 +1,25 @@
+﻿@model RecrutmentAgency.Data.Filters.CandidateFilter
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName)
+            @Html.EditorFor(model => model.LastName)
+            @Html.LabelFor(model => model.FirstName)
+            @Html.EditorFor(model => model.FirstName)
+            @Html.LabelFor(model => model.Patronymic)
+            @Html.EditorFor(model => model.Patronymic)
+        </div>
+        <div class="form-group">
+            @Html.Label("Дата рождения с")
+            @Html.EditorFor(model => model.DateBirth.From)
+            @Html.Label("Дата рождения по")
+            @Html.EditorFor(model => model.DateBirth.To)
+            @Html.LabelFor(model => model.Experience)
+            @Html.EditorFor(model => model.Experience)
+            <input type="submit" value="Поиск" />
+        </div>
+        
+    </div>
+}

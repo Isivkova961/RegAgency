@@ -1,0 +1,21 @@
+﻿@model RecrutmentAgency.Models.UserModel
+
+@{
+    ViewBag.Title = Model.UserName;
+}
+
+<h2>Информация о пользователе: @Model.UserName</h2>
+<div class="container">
+    <ul class="nav nav-list">
+        <li>@Html.ActionLink("Обратно к списку", "List")</li>
+        <li>@Html.ActionLink("Редактировать", "Edit", new { id = Model.Entity.Id })</li>
+        <li>@Html.ActionLink("Удалить", "Delete", new { id = Model.Entity.Id })</li>
+    </ul>
+</div>
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.UserName)</th>
+        <td>@Html.DisplayFor(model => model.UserName)</td>
+    </tr>
+
+</table>

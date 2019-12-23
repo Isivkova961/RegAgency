@@ -1,0 +1,159 @@
+USE master
+
+GO
+IF db_id('RecrAgency') IS NULL BEGIN
+--DROP DATABASE RecrAgency
+CREATE DATABASE RecrAgency;
+END
+GO
+
+USE RecrAgency
+GO
+
+IF OBJECT_ID('Role') IS NULL BEGIN
+--  DROP TABLE [Role]
+    CREATE TABLE [Role] (
+        [Id] bigint IDENTITY(1,1)  NOT NULL,
+        [Name] NVARCHAR(64) UNIQUE NOT NULL
+    )
+    GRANT SELECT, UPDATE, INSERT, DELETE ON DBO.[Role] TO [PUBLIC]
+END
+GO
+
+IF OBJECT_ID('PK_Role$Id') IS NULL BEGIN
+    ALTER TABLE [Role] ADD CONSTRAINT PK_Role$Id
+    PRIMARY KEY CLUSTERED ([Id]) ON [PRIMARY]
+END
+GO
+
+IF OBJECT_ID('User') IS NULL BEGIN
+--  DROP TABLE [User]
+    CREATE TABLE [User] (
+        [Id] bigint IDENTITY(1,1)  NOT NULL,
+        [UserName] NVARCHAR(128) UNIQUE NOT NULL,
+        [Password] NVARCHAR(128) NOT NULL,
+		[RoleId] bigint NOT NULL
+    )
+    GRANT SELECT, UPDATE, INSERT, DELETE ON DBO.[User] TO [PUBLIC]
+END
+GO
+
+IF OBJECT_ID('PK_User$Id') IS NULL BEGIN
+    ALTER TABLE [User] ADD CONSTRAINT PK_User$Id
+    PRIMARY KEY CLUSTERED ([Id]) ON [PRIMARY]
+END
+GO
+
+IF OBJECT_ID('FK_User$Role') IS NULL BEGIN
+    ALTER TABLE [User] ADD CONSTRAINT [FK_User$Role] FOREIGN KEY([RoleId]) REFERENCES [Role]([Id]) ON DELETE CASCADE
+END
+GO
+
+IF OBJECT_ID('PhotoFile') IS NULL BEGIN
+--  DROP TABLE [PhotoFile]
+    CREATE TABLE [PhotoFile] (
+        [Id] bigint IDENTITY(1,1)  NOT NULL,
+		[FileName] NVARCHAR(128) COLLATE Cyrillic_General_CI_AS NULL,
+		[ContentType] NVARCHAR(50) NULL,
+		[Length] bigint NULL
+    )
+    GRANT SELECT, UPDATE, INSERT, DELETE ON DBO.[PhotoFile] TO [PUBLIC]
+END
+GO
+
+
+IF OBJECT_ID('PK_PhotoFile$Id') IS NULL BEGIN
+    ALTER TABLE [PhotoFile] ADD CONSTRAINT PK_PhotoFile$Id
+    PRIMARY KEY CLUSTERED ([Id]) ON [PRIMARY]
+END
+GO
+
+IF OBJECT_ID('PhotoFileContent') IS NULL BEGIN
+--  DROP TABLE [PhotoFileContent]
+    CREATE TABLE [PhotoFileContent] (
+        [Id] bigint IDENTITY(1,1)  NOT NULL,
+		[Content] VARBINARY(MAX) NULL,
+		[PhotoFileId] bigint NULL
+    )
+    GRANT SELECT, UPDATE, INSERT, DELETE ON DBO.[PhotoFileContent] TO [PUBLIC]
+END
+GO
+
+
+IF OBJECT_ID('PK_PhotoFileContent$Id') IS NULL BEGIN
+    ALTER TABLE [PhotoFileContent] ADD CONSTRAINT PK_PhotoFileContent$Id
+    PRIMARY KEY CLUSTERED ([Id]) ON [PRIMARY]
+END
+GO
+
+IF OBJECT_ID('FK_PhotoFileContent$File') IS NULL BEGIN
+    ALTER TABLE PhotoFileContent ADD CONSTRAINT [FK_PhotoFileContent$File] FOREIGN KEY([PhotoFileId]) REFERENCES [PhotoFile]([Id]) ON DELETE CASCADE
+END
+GO
+
+IF OBJECT_ID('Candidate') IS NULL BEGIN
+--  DROP TABLE [Candidate]
+    CREATE TABLE [Candidate] (
+        [Id] bigint IDENTITY(1,1)  NOT NULL,
+        [LastName] NVARCHAR(128) COLLATE Cyrillic_General_CI_AS NOT NULL,
+		[FirstName] NVARCHAR(128) COLLATE Cyrillic_General_CI_AS NOT NULL,
+		[Patronymic] NVARCHAR(128) COLLATE Cyrillic_General_CI_AS NOT NULL,
+		[DateBirth] DATETIME2(7) NOT NULL,
+		[Experience] NVARCHAR(256) COLLATE Cyrillic_General_CI_AS NOT NULL,
+		[PhotoFileId] bigint NOT NULL,
+		[UserId] bigint NOT NULL
+    )
+    GRANT SELECT, UPDATE, INSERT, DELETE ON DBO.[Candidate] TO [PUBLIC]
+END
+GO
+
+
+IF OBJECT_ID('PK_Candidate$Id') IS NULL BEGIN
+    ALTER TABLE [Candidate] ADD CONSTRAINT PK_Candidate$Id
+    PRIMARY KEY CLUSTERED ([Id]) ON [PRIMARY]
+END
+GO
+
+IF OBJECT_ID('FK_Candidate$User') IS NULL BEGIN
+    ALTER TABLE Candidate ADD CONSTRAINT [FK_Candidate$User] FOREIGN KEY([UserId]) REFERENCES [User]([Id]) ON DELETE CASCADE
+END
+GO
+
+IF OBJECT_ID('FK_Candidate$File') IS NULL BEGIN
+    ALTER TABLE Candidate ADD CONSTRAINT [FK_Candidate$File] FOREIGN KEY([PhotoFileId]) REFERENCES [PhotoFile]([Id]) ON DELETE CASCADE
+END
+GO
+
+IF OBJECT_ID('Vacancy') IS NULL BEGIN
+--  DROP TABLE [Vacancy]
+    CREATE TABLE [Vacancy] (
+        [Id] bigint IDENTITY(1,1)  NOT NULL,
+        [Name] NVARCHAR(128) UNIQUE NOT NULL,
+		[Description] NVARCHAR(MAX) COLLATE Cyrillic_General_CI_AS NOT NULL,
+		[DateBegin] DATETIME2(7) NOT NULL,
+		[DateEnd] DATETIME2(7) NOT NULL,
+		[Company] NVARCHAR(128) COLLATE Cyrillic_General_CI_AS NOT NULL,
+		[Demand] NVARCHAR(128) COLLATE Cyrillic_General_CI_AS NOT NULL,
+		[Salary] MONEY NULL,
+		[UserId] bigint NOT NULL
+    )
+    GRANT SELECT, UPDATE, INSERT, DELETE ON DBO.[Vacancy] TO [PUBLIC]
+END
+GO
+
+IF OBJECT_ID('PK_Vacancy$Id') IS NULL BEGIN
+    ALTER TABLE [Vacancy] ADD CONSTRAINT PK_Vacancy$Id
+    PRIMARY KEY CLUSTERED ([Id]) ON [PRIMARY]
+END
+GO
+
+IF OBJECT_ID('FK_Vacancy$User') IS NULL BEGIN
+    ALTER TABLE [Vacancy] ADD CONSTRAINT [FK_Vacancy$User] FOREIGN KEY([UserId]) REFERENCES [User]([Id]) ON DELETE CASCADE
+END
+GO
+
+
+
+
+
+
