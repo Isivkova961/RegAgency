@@ -36,5 +36,11 @@ namespace RecrutmentAgency.Data.Repositories
             }
 
         }
+        public Role GetByRole(long roleId)
+        {
+            var crit = session.CreateCriteria<Role>()
+                .Add(Restrictions.Eq("Id", roleId));
+            return crit.UniqueResult<Role>();
+        }
     }
 }

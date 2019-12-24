@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using RecrutmentAgency.Data;
 
 namespace RecrutmentAgency.Models
 {
@@ -19,5 +20,7 @@ namespace RecrutmentAgency.Models
         [DataType(DataType.Password)]
         [System.Web.Mvc.Compare("Password", ErrorMessage = "Пароли не совпадают")]
         public string ConfirmPassword { get; set; }
+
+        public Role RoleId { get; set; }
     }
 }

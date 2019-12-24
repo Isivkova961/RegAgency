@@ -18,3 +18,23 @@ d:\Исходники\Кадровое агенство1\RecrutmentAgency\WebApp
 d:\Исходники\Кадровое агенство1\RecrutmentAgency\WebApplication1.DAL\obj\Debug\RecrutmentAgency.Data.csprojResolveAssemblyReference.cache
 d:\Исходники\Кадровое агенство1\RecrutmentAgency\WebApplication1.DAL\obj\Debug\RecrutmentAgency.Data.dll
 d:\Исходники\Кадровое агенство1\RecrutmentAgency\WebApplication1.DAL\obj\Debug\RecrutmentAgency.Data.pdb
+D:\Project\RecAgency1\WebApplication1.DAL\bin\Debug\RecrutmentAgency.Data.dll.config
+D:\Project\RecAgency1\WebApplication1.DAL\bin\Debug\RecrutmentAgency.Data.dll
+D:\Project\RecAgency1\WebApplication1.DAL\bin\Debug\RecrutmentAgency.Data.pdb
+D:\Project\RecAgency1\WebApplication1.DAL\bin\Debug\Antlr3.Runtime.dll
+D:\Project\RecAgency1\WebApplication1.DAL\bin\Debug\FluentNHibernate.dll
+D:\Project\RecAgency1\WebApplication1.DAL\bin\Debug\Iesi.Collections.dll
+D:\Project\RecAgency1\WebApplication1.DAL\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Project\RecAgency1\WebApplication1.DAL\bin\Debug\NHibernate.dll
+D:\Project\RecAgency1\WebApplication1.DAL\bin\Debug\Remotion.Linq.dll
+D:\Project\RecAgency1\WebApplication1.DAL\bin\Debug\Remotion.Linq.EagerFetching.dll
+D:\Project\RecAgency1\WebApplication1.DAL\bin\Debug\Antlr3.Runtime.xml
+D:\Project\RecAgency1\WebApplication1.DAL\bin\Debug\FluentNHibernate.xml
+D:\Project\RecAgency1\WebApplication1.DAL\bin\Debug\Iesi.Collections.xml
+D:\Project\RecAgency1\WebApplication1.DAL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Project\RecAgency1\WebApplication1.DAL\bin\Debug\NHibernate.xml
+D:\Project\RecAgency1\WebApplication1.DAL\bin\Debug\Remotion.Linq.xml
+D:\Project\RecAgency1\WebApplication1.DAL\bin\Debug\Remotion.Linq.EagerFetching.xml
+D:\Project\RecAgency1\WebApplication1.DAL\obj\Debug\RecrutmentAgency.Data.csprojResolveAssemblyReference.cache
+D:\Project\RecAgency1\WebApplication1.DAL\obj\Debug\RecrutmentAgency.Data.dll
+D:\Project\RecAgency1\WebApplication1.DAL\obj\Debug\RecrutmentAgency.Data.pdb

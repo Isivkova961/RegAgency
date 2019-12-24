@@ -51,11 +51,12 @@ namespace RecrutmentAgency.Controllers
             var user = new User 
             {
                 UserName = model.UserName,
-                Password = model.Password
+                Password = model.Password,
+                RoleName = userRepository.GetByRole(3)
             };
             var res = UserManager.CreateAsync(user, model.Password);
             if (res.Result == IdentityResult.Success)
-            { 
+            {
                 return RedirectToAction("List");
             }
             return View(model);

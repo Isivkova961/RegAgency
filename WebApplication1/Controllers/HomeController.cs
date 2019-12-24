@@ -23,7 +23,7 @@ namespace RecrutmentAgency.Controllers
         {
             var model = new HomeModel 
             { 
-                Title = "Крутое приложение!",
+                Title = "Кадровое агенство",
                 Time = DateTime.Now
             };
             return View(model);

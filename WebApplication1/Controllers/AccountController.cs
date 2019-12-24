@@ -17,6 +17,13 @@ namespace RecrutmentAgency.Controllers
 {
     public class AccountController: Controller
     {
+        private UserRepository userRepository;
+
+        public AccountController(UserRepository userRepository)
+        {
+            this.userRepository = userRepository;
+        }
+
         public SignInManager SignInManager
         {
             get { return HttpContext.GetOwinContext().Get<SignInManager>(); }
@@ -73,7 +80,8 @@ namespace RecrutmentAgency.Controllers
             var user = new User
             {
                 UserName = model.UserName,
-                Password = model.Password
+                Password = model.Password,
+                RoleName = userRepository.GetByRole(3)
             };
             var res = UserManager.CreateAsync(user, model.Password);
             if (res.Result == IdentityResult.Success)
